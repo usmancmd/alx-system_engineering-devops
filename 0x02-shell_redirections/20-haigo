@@ -1,2 +1,2 @@
 #!/bin/bash
-tr -d [:alpha:]
+tr -d 'c' 'C'
