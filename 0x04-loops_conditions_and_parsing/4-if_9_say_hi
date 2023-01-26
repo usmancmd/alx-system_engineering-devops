@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Displays "Best School" ten times but on the 9th times followed by "Hi"
+a=0
+while [ $a -lt 10 ];
+do
+	if [ $a == 9 ]; then
+		echo "Hi"
+	fi
+	echo "Best School"
+	a=$((a+1))
+done 
