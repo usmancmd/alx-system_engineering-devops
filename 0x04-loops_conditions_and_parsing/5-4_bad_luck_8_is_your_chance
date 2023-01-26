@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Displays "Best School", "bad luck", "good luck"
+a=1
+while [ $a -lt 9 ];
+do
+	if [ $a == 4 ]; then
+		echo "bad luck"
+	elif [ $a == 7 ]; then
+		echo "good luck"
+	fi
+	echo "Best School"
+	((a++))
+done
