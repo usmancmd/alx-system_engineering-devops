@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Displays current directory in a list format
+ls=$(ls)
+for i in $ls
+do
+	echo $i | cut -d '-' -f 2
+done
