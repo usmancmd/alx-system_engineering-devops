@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Gives infomation about school file
 
-file=school
+file="school"
 if test ! -f "$file"; then
 	echo "school file does not exist"
 else
