@@ -2,7 +2,7 @@
 # Gives infomation about school file
 
 file="school"
-if test ! -f "$file"; then
+if [ ! -e "$file" ]; then
 	echo "school file does not exist"
 else
 	echo "school file exists"
@@ -12,5 +12,7 @@ else
 		echo "school file is empty"
 	fi
 
-	echo "school is a regular file"
+	if [ -f "$file" ]; then
+		echo "school is a regular file"
+	fi
 fi
