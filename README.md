@@ -6,9 +6,6 @@ Welcome to my ALX System Engineering DevOps repository! This repository contains
 
 - [Description](#description)
 - [Requirements](#requirements)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Description
 
