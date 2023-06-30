@@ -1,25 +1,11 @@
 # Install and configure an Nginx server using Puppet instead of Bash
 
-package {'nginx':
-  ensure => 'present',
-}
-
-exec {'install':
-  command  => 'sudo apt-get update ; sudo apt-get -y install nginx',
-  provider => shell,
-
-}
-
-exec {'Hello':
-  command  => 'echo "Hello World!" | sudo tee /var/www/html/index.html',
-  provider => shell,
-}
-
-exec {'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/blog.ehoneahobed.com\/;\\n\\t}/" /etc/nginx/sites-available/default':
-  provider => shell,
-}
-
-exec {'run':
-  command  => 'sudo service nginx restart',
+exec {'install nginx':
+  command  => 'sudo apt-get update;
+		sudo apt-get install nginx -y;
+		echo "Hello World!" | sudo tee /var/www/html/index.html;
+		new_configuration="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
+		sudo sed -i "s/server_name _;/$new_configuration/" /etc/nginx/sites-enabled/default
+		sudo service nginx restart',
   provider => shell,
 }
