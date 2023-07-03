@@ -1,23 +1,10 @@
 # Installs a Nginx server and
-# Create a custom HTTP header response
+# Create a custom HTTP header response with puppet
 
-exec {'update':
+exec { 'command':
+  command  => 'apt-get -y update;
+  apt-get -y install nginx;
+  sudo sed -i "/listen 80 default_server;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default;
+  service nginx restart',
   provider => shell,
-  command  => 'sudo apt-get -y update',
-}
-
-exec {'install Nginx':
-  provider => shell,
-  command  => 'sudo apt-get -y install nginx',
-}
-
-exec { 'add_header':
-  provider    => shell,
-  environment => ["HOST=${hostname}"],
-  command     => 'sudo sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\tadd_header X-Served-By \"$HOST\";/" /etc/nginx/nginx.conf',
-}
-
-exec { 'restart Nginx':
-  provider => shell,
-  command  => 'sudo service nginx restart',
 }
