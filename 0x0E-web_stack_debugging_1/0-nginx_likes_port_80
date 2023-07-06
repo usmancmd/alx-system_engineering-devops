@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# debugging Ubuntu container’s Nginx installation
+# Debugging Ubuntu container’s Nginx installation
 # from listening on port 80
 
 cd /etc/nginx/sites-enabled/ || exit;
