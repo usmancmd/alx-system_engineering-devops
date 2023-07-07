@@ -8,11 +8,11 @@ subdomain_info () {
 
 if [ "$#" == 1 ]
 then
-  subdomain_info "www.$1" "www"
-  subdomain_info "lb-01.$1" "lb-01"
-  subdomain_info "web-01.$1" "web-01"
-  subdomain_info "web-02.$1" "web-02"
+  subdomain_info "$1" "www"
+  subdomain_info "$1" "lb-01"
+  subdomain_info "$1" "web-01"
+  subdomain_info "$1" "web-02"
 elif [ "$#" == 2 ]
 then
-  subdomain_info "$2.$1" "$2"
+  subdomain_info "$1" "$2"
 fi
