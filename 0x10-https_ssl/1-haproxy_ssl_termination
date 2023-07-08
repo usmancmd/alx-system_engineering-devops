@@ -35,21 +35,14 @@ defaults
 
 
 # new configurations added by me
-frontend www-http
-    bind   0:80
-    reqadd X-Forwarded-Proto:\ http
-    default_backend www-backend
-
 frontend www-https
-    bind   0:443 ssl crt /etc/letsencrypt/live/www.usmansolutions.tech/fullchain.pem
-    reqadd X-Forwarded-Proto:\ https
-    acl    letsencrypt-acl path_beg /.well-known/acme-challenge/
-    use_backend letsencrypt-backend if letsencrypt-acl
+    bind *:80
+    mode http
     default_backend www-backend
+    bind   0:443 ssl crt /etc/letsencrypt/live/www.usmansolutions.tech/fullchain.pem
+    redirect scheme https if !{ ssl_fc }
 
 backend www-backend
     balance  roundrobin
-    redirect scheme https if !{ ssl_fc }
     server 154322-web-01 34.227.93.37:80 check
     server 154322-web-02 54.162.78.64:80 check
-
