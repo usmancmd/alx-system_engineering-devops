@@ -35,12 +35,11 @@ defaults
 
 
 # new configurations added by me
-frontend www-https
-    bind *:80
-    mode http
-    default_backend www-backend
-    bind   0:443 ssl crt /etc/letsencrypt/live/www.usmansolutions.tech/fullchain.pem
-    redirect scheme https if !{ ssl_fc }
+frontend www-http
+        bind *:80
+        bind *:443 ssl crt /etc/haproxy/certs/www.usmansolutions.tech.pem
+        redirect scheme https code 301 if !{ ssl_fc }
+        default_backend www-backend
 
 backend www-backend
     balance  roundrobin
