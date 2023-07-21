@@ -1,29 +1,3 @@
 #!/usr/bin/env bash
 # Runs the whoami command under the user passed
-
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <username>"
-    exit 1
-fi
-
-# Get the username from the command-line argument
-username="$1"
-
-# Check if the user exists on the system
-if id "$username" &>/dev/null; then
-    # Get the user's home directory
-    home_dir=$(getent passwd "$username" | cut -d ':' -f 6)
-
-    # Check if the user has a home directory
-    if [ -z "$home_dir" ]; then
-        echo "User $username - user without HOME"
-    else
-        echo "User $username - user with HOME"
-    fi
-
-    # Run the whoami command under the user passed as an argument
-    sudo -u "$username" whoami
-else
-    echo "User $username not found."
-fi
-
+sudo -u "$1" whoami
