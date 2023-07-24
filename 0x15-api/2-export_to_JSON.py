@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Returns information for a given employee ID
-and export data in the CSV format.
+and export data in the JSON format..
 """
 import json
 import requests
