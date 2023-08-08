@@ -18,6 +18,6 @@ def top_ten(subreddit):
 
         for index, post in enumerate(posts[:10], start=1):
             title = post["data"]["title"]
-            print(f"{index}. {title}")
+            print(f"{title}")
     else:
         return 0
